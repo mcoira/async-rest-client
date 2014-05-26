@@ -8,12 +8,27 @@
     <packaging>jar</packaging>
 
     <name>async-rest-client</name>
-    <url>http://maven.apache.org</url>
+    <description>Asynchronous HTTP and WebSocket client library for Java 8</description>
+    <url>https://github.com/mcoira/async-rest-client</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java-version>1.8</java-version>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/mcoira/async-rest-client.git</url>
+        <connection>scm:git:git@github.com:mcoira/async-rest-client.git</connection>
+        <developerConnection>scm:git:git@github.com:mcoira/async-rest-client.git</developerConnection>
+    </scm>
 
     <build>
         <finalName>async-rest-client-${project.version}</finalName>
