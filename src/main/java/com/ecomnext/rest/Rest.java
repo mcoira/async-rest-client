@@ -1,6 +1,7 @@
 package com.ecomnext.rest;
 
 import com.ecomnext.rest.ning.NingRestAPI;
+import com.ning.http.client.AsyncHttpClientConfig;
 
 /**
  * Asynchronous API to to query REST services, as an http client.
@@ -9,6 +10,10 @@ import com.ecomnext.rest.ning.NingRestAPI;
  */
 public class Rest {
     private static final RestAPI restApi = new NingRestAPI();
+
+    public void setClient(AsyncHttpClientConfig httpClientConfig) {
+        restApi.setClient(httpClientConfig);
+    }
 
     public static RestClient client() {
         return restApi.client();
@@ -22,4 +27,9 @@ public class Rest {
     public static RestRequestHolder url(String url) {
         return client().url(url);
     }
+
+    public static RestRequestHolder url(String url, String... params) {
+        return client().url(url, params);
+    }
+
 }

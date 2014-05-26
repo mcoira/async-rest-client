@@ -1,5 +1,8 @@
 package com.ecomnext.rest.ning;
 
+import com.damnhandy.uri.template.MalformedUriTemplateException;
+import com.damnhandy.uri.template.UriTemplate;
+import com.damnhandy.uri.template.VariableExpansionException;
 import com.ecomnext.rest.RestAuthScheme;
 import com.ecomnext.rest.RestRequestHolder;
 import com.ecomnext.rest.RestResponse;
@@ -55,6 +58,35 @@ public class NingRestRequestHolder implements RestRequestHolder {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public NingRestRequestHolder(NingRestClient client, String url, String... params) {
+        try {
+            this.client = client;
+
+            UriTemplate uriTemplate = UriTemplate.fromTemplate(url);
+            if (uriTemplate.getVariables().length != params.length) {
+                throw new IllegalArgumentException("The number of variables in the URL and the number of values do not match");
+            }
+
+            for (int i = 0; i < params.length; i++) {
+                uriTemplate.set(uriTemplate.getVariables()[i], params[i]);
+            }
+            url = uriTemplate.expand();
+
+            URL reference = new URL(url);
+            this.url = url;
+
+            String userInfo = reference.getUserInfo();
+            if (userInfo != null) {
+                this.setAuth(userInfo);
+            }
+            if (reference.getQuery() != null) {
+                this.setQueryString(reference.getQuery());
+            }
+        } catch (MalformedURLException | MalformedUriTemplateException | VariableExpansionException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

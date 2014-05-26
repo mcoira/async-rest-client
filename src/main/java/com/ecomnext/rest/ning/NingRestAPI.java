@@ -13,8 +13,13 @@ public class NingRestAPI implements RestAPI {
             new AtomicReference<>(Optional.<NingRestClient>empty());
 
     private NingRestClient newClient() {
-        AsyncHttpClientConfig httpClientConfig = new AsyncHttpClientConfig.Builder().build();;
+        AsyncHttpClientConfig httpClientConfig = new AsyncHttpClientConfig.Builder().build();
         return new NingRestClient(httpClientConfig);
+    }
+
+    public void setClient(AsyncHttpClientConfig httpClientConfig) {
+        clientHolder.getAndSet(Optional.of(new NingRestClient(httpClientConfig)))
+                .ifPresent(NingRestClient::close);
     }
 
     /**

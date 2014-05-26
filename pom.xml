@@ -46,6 +46,7 @@
     </build>
 
     <dependencies>
+        <!-- Asynchronous Http and WebSocket Client library for Java -->
         <dependency>
             <groupId>com.ning</groupId>
             <artifactId>async-http-client</artifactId>
@@ -56,6 +57,12 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.3.3</version>
+        </dependency>
+        <!-- A Java URI Template processor implementing RFC6570 -->
+        <dependency>
+            <groupId>com.damnhandy</groupId>
+            <artifactId>handy-uri-templates</artifactId>
+            <version>2.0.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
