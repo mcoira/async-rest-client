@@ -25,7 +25,7 @@ public class NingRestAPI implements RestAPI {
     /**
      * resets the underlying AsyncHttpClient
      */
-    protected void resetClient() {
+    public void resetClient() {
         clientHolder.getAndSet(Optional.empty()).ifPresent(NingRestClient::close);
     }
 

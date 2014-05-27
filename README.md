@@ -81,7 +81,7 @@ Realm realm = new Realm.RealmBuilder()
                        .build();
 builder.setRealm(realm).build();
 
-Rest.setClient(builder.build());
+Rest.configClient(builder.build());
 ```
   
 ### Request with follow redirects

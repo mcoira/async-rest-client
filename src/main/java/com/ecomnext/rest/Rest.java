@@ -11,8 +11,17 @@ import com.ning.http.client.AsyncHttpClientConfig;
 public class Rest {
     private static final RestAPI restApi = new NingRestAPI();
 
-    public void setClient(AsyncHttpClientConfig httpClientConfig) {
+    /**
+     * Close the underlying connections of the current client if exist and replace it with a new
+     * one which has the config received.
+     */
+    public static void configClient(AsyncHttpClientConfig httpClientConfig) {
         restApi.setClient(httpClientConfig);
+    }
+
+    /** Close the underlying connections. */
+    public static void close() {
+        restApi.resetClient();
     }
 
     public static RestClient client() {

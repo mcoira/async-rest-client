@@ -7,5 +7,7 @@ public interface RestAPI {
 
     public void setClient(AsyncHttpClientConfig httpClientConfig);
 
+    public void resetClient();
+
     public RestRequestHolder url(String url);
 }
