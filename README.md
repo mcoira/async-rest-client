@@ -198,6 +198,42 @@ try {
 
 ```
 
+## Using RestClient
+
+The ```RestClient``` class is a wrapper around the underlying [AsyncHttpClient](https://github.com/AsyncHttpClient/async-http-client). It gives you the additional functionality making easier to work with futures, formats, and much more.
+
+The class ```Rest``` gives you access to a default client.
+
+```java
+RestClient client = Rest.client();
+```
+
+In some cases you will need to define multiple clients with different profiles, or using a mock for testing purposes. You can define a Rest client directly from code and use it for making requests.
+
+```java
+com.ning.http.client.AsyncHttpClientConfig customConfig =
+    new com.ning.http.client.AsyncHttpClientConfig.Builder()
+        .setProxyServer(new com.ning.http.client.ProxyServer("127.0.0.1", 38080))
+        .setCompressionEnabled(true)
+        .build();
+WSClient customClient = new com.ecomnext.rest.ning.NingRestClient(customConfig);
+
+CompletableFuture<RestResponse> response = customClient.url("http://example.com/feed").get();
+```
+
+NOTE: if you instantiate a NingRestClient object, you must shutdown using client.close() when processing has completed. This will release the underlying ThreadPoolExecutor used by AsyncHttpClient. Failure to close the client may result in out of memory exceptions (especially if you are reloading an application frequently in development mode).
+
+You can also get access to the underlying AsyncHttpClient.
+
+```java
+com.ning.http.client.AsyncHttpClient underlyingClient =  Rest.client().getUnderlying();
+```
+
+## Limitations
+
+This library does not support multi part form upload directly neither streaming body upload. You can do both of them using the underlying client.
+
+
 ### License
 
 This software is licensed under the Apache 2 license, quoted below.
