@@ -229,7 +229,7 @@ You can also get access to the underlying AsyncHttpClient.
 com.ning.http.client.AsyncHttpClient underlyingClient =  Rest.client().getUnderlying();
 ```
 
-## Limitations
+## RestClient Limitations
 
 This library does not support multi part form upload directly neither streaming body upload. You can do both of them using the underlying client.
 
