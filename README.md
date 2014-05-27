@@ -234,7 +234,7 @@ com.ning.http.client.AsyncHttpClient underlyingClient =  Rest.client().getUnderl
 This library does not support multi part form upload directly neither streaming body upload. You can do both of them using the underlying client.
 
 
-### License
+## License
 
 This software is licensed under the Apache 2 license, quoted below.
 
