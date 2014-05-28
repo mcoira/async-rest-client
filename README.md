@@ -8,7 +8,7 @@ Asynchronous REST client is an HTTP and WebSocket client library for Java 8 focu
 
 We have been users of other client libraries such as [Apache HTTPClient](http://hc.apache.org/httpcomponents-client-ga/) or [async-http-client](https://github.com/AsyncHttpClient/async-http-client). Both of them are great but their approach is too low level. In order to gain usability you need to use wrappers like [Apache Fluent](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/fluent.html), [Spring RestTemplate](http://docs.spring.io/spring/docs/4.0.5.RELEASE/spring-framework-reference/htmlsingle/#rest-resttemplate), or [Play WS API](https://github.com/playframework/playframework/tree/master/framework/src/play-java-ws). 
 
-We were regular users of Play WS because it solves most of our requirements but for some Java projects it is a problem to include too many dependencies (Play Framework, Akka, Scala) and may be uncomfortable to use Scala Promises. So we started from Play WS code to build a more suitable client for us.
+We were regular users of [Play WS](https://github.com/playframework/playframework/tree/master/framework/src/play-java-ws) because it solves most of our requirements but for some Java projects it is a problem to include too many dependencies (Play Framework, Akka, Scala) and may be uncomfortable to use Scala Promises. So we started from Play WS code to build a more suitable client for us.
 
 ## Getting started
 
