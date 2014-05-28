@@ -24,6 +24,8 @@ To use the latest version of this library you need to add the following dependen
 </dependency>
 ```
 
+**Important note: this project is not hosted in Maven Central yet.**
+
 ### Making a request
 
 To build an HTTP request, you start with Rest.url() to specify the URL.
