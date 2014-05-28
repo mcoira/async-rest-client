@@ -113,7 +113,8 @@ Rest.url("http://example.com").setHeader("headerKey", "headerValue").get();
 FYI: the ```Content-Type``` header is set automatically either for JSON and XML but, if you are sending plain text in a particular format, you may want to define the content type explicitly.
 
 ```java
-Rest.url("http://example.com").setHeader("Content-Type", "application/json").post(jsonString);
+Rest.url("http://example.com").setHeader("Content-Type", "application/json")
+		.post(jsonString);
 // OR
 Rest.url("http://example.com").setContentType("application/json").post(jsonString);
 ```
@@ -220,7 +221,8 @@ com.ning.http.client.AsyncHttpClientConfig customConfig =
         .build();
 WSClient customClient = new com.ecomnext.rest.ning.NingRestClient(customConfig);
 
-CompletableFuture<RestResponse> response = customClient.url("http://example.com/feed").get();
+CompletableFuture<RestResponse> response =
+		customClient.url("http://example.com/feed").get();
 ```
 
 NOTE: if you instantiate a NingRestClient object, you must shutdown using client.close() when processing has completed. This will release the underlying ThreadPoolExecutor used by AsyncHttpClient. Failure to close the client may result in out of memory exceptions (especially if you are reloading an application frequently in development mode).
