@@ -87,6 +87,19 @@ public class Json {
     }
 
     /**
+     * Convert a String to a Java value.
+     * @param content String value to convert.
+     * @param clazz Expected Java value type.
+     */
+    public static <A> A fromString(String content, Class<A> clazz) {
+        try {
+            return mapper().readValue(content, clazz);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * Creates a new empty ObjectNode.
      */
     public static ObjectNode newObject() {
